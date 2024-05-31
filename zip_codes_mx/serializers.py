@@ -6,7 +6,7 @@ from zip_codes_mx.models import State, City, PostalCode, Settlement
 class PostalCodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostalCode
-        fields = '__all__'
+        fields = ['code']
 
 
 
