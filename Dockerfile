@@ -16,5 +16,5 @@ COPY . .
 # Expose port (adjust if needed)
 EXPOSE 8080
 
-# Run Gunicorn as the main process
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "src.wsgi:application"]
+# Run Gunicorn as the main process with the config file
+CMD ["gunicorn", "-c", "gunicorn_config.py", "src.wsgi:application"]

@@ -4,12 +4,10 @@ from rest_framework import authentication, permissions
 
 from django.conf import settings
 from zip_codes_mx.models import State
-from zip_codes_mx.collect import collect_data, url_xlx
 
 class ZipApi(APIView):
 
     def get(self, request, format=None):
-        #collect_data(url_xlx)
         states = State.objects.all()
         print(states)
         return Response({'message': 'Hello, World!'})

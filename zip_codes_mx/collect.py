@@ -86,7 +86,7 @@ def collect_data(url):
 
     else:
 
-        for index in range(2,3):
+        for index in range(32,33):
             create_zip_code_records(url, index)
             
         
@@ -100,4 +100,4 @@ def collect_data(url):
         else:
             print(f"Tiempo transcurrido: {time_elapsed} segundos")
 
-#collect_data(url_xlx)
+collect_data(url_xlx)
