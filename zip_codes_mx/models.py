@@ -51,7 +51,7 @@ class City(models.Model):
 
 # MODELO CÓDIGOS POSTALES DE MÉXICO
 class PostalCode(models.Model):
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
     code = models.CharField(max_length=50)
 
     class Meta:
