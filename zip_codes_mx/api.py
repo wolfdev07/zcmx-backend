@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions, status
 
 from zip_codes_mx.models import PostalCode, Settlement, City
-from zip_codes_mx.serializers import PostalCodeSerializer, CitySerializer, StateSerializer, SettlementSerializer
+from zip_codes_mx.serializers import PostalCodeSerializer, CitySerializer, StateSerializer, SettlementSerializer, MunicipalitySerializer
 from zip_codes_mx.querys import city_name_search_engine
 
 # ENDPOINT ELEMENTAL DE LA APP: busca por código postal.
@@ -20,12 +20,12 @@ class PostalCodeApi(APIView):
         try:
             postal_code_obj = PostalCode.objects.get(code=postal_code)
             settlements_obj = Settlement.objects.filter(postal_code=postal_code_obj)
-            city_obj = postal_code_obj.city
-            state_obj = city_obj.state
+            municipality_obj = postal_code_obj.municipality
+            state_obj = municipality_obj.state
             
             serializer = {
                 "postal_code": PostalCodeSerializer(postal_code_obj).data.get('code'),
-                "city": CitySerializer(city_obj).data.get('name'),
+                "municipality": MunicipalitySerializer(municipality_obj).data.get('name'),
                 "state": StateSerializer(state_obj).data.get('name'),
                 "settlements": SettlementSerializer(settlements_obj, many=True).data
             }
